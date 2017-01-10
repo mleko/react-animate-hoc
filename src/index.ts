@@ -1,13 +1,16 @@
 import * as React from "react";
+import {easing, easingDefinition} from "./easing";
 
 const defaults: AnimationOptions = {
-	duration: 1000
+	duration: 1000,
+	easing: "linear"
 };
 
 export function animate(options?: AnimationOptions): <C extends Function>(WrappedComponent: C) => C {
 
 	options = options || defaults;
 	const duration = options.duration || defaults.duration;
+	const timingFunction = easing(options.easing || defaults.easing);
 
 	return <T extends React.ComponentClass<P>, P>(WrappedComponent: T): React.ComponentClass<P> => {
 
@@ -85,7 +88,7 @@ export function animate(options?: AnimationOptions): <C extends Function>(Wrappe
 					if (this.prevProps.hasOwnProperty(key) && Animate.isNumber(this.props[key]) && Animate.isNumber(this.prevProps[key])) {
 						let prevProp = this.prevProps[key] as number;
 						let prop = this.props[key] as number;
-						props[key] = (prevProp) + (prop - prevProp) * a;
+						props[key] = (prevProp) + (prop - prevProp) * timingFunction(a);
 					}
 				}
 				return props;
@@ -102,4 +105,5 @@ export function animate(options?: AnimationOptions): <C extends Function>(Wrappe
 
 export interface AnimationOptions {
 	duration: number;
+	easing?: easingDefinition;
 }

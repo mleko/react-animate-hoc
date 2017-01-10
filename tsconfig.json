@@ -14,6 +14,7 @@
   },
   "files": [
     "node_modules/@types/es6-shim/index.d.ts",
-    "src/index.ts"
+    "src/index.ts",
+    "declarations.d.ts"
   ]
 }
