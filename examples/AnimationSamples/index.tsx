@@ -1,6 +1,6 @@
 import * as React from "react";
-import {animate, AnimationOptions} from "./../../src";
 import {FloatingDiv} from "../FloatingDiv";
+import {animate, AnimationOptions} from "./../../src";
 
 const defs: AnimationOptions[] = [
 	{duration: 1000},

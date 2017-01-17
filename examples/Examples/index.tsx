@@ -1,8 +1,8 @@
 import * as React from "react";
 import {AnimationSamples} from "../AnimationSamples";
 import {AnnotatedElement} from "../AnnotatedElement";
-import {WrappedElement} from "../WrappedElement";
 import {FloatingDiv} from "../FloatingDiv/index";
+import {WrappedElement} from "../WrappedElement";
 
 export class Examples extends React.Component<void, State> {
 

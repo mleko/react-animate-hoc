@@ -1,10 +1,14 @@
 import * as React from "react";
+import {AnimationEngine, AnimationFrameEngine, IntervalEngine} from "./AnimationEngine";
 import {easing, easingDefinition} from "./easing";
 
 const defaults: AnimationOptions = {
 	duration: 1000,
 	easing: "linear"
 };
+
+const requestAnimationFrameAvailable = !!window.requestAnimationFrame;
+const animationEngine: AnimationEngine = requestAnimationFrameAvailable ? new AnimationFrameEngine() : new IntervalEngine(60);
 
 export function animate(options?: AnimationOptions): <C extends Function>(WrappedComponent: C) => C {
 
@@ -22,8 +26,9 @@ export function animate(options?: AnimationOptions): <C extends Function>(Wrappe
 				return typeof value === "number";
 			}
 
-			private intervalId;
-			private animationStartDate: number;
+			private cancelAnimation: () => void;
+
+			private animationStartDate: number = null;
 
 			private prevProps: P;
 
@@ -50,33 +55,26 @@ export function animate(options?: AnimationOptions): <C extends Function>(Wrappe
 
 			private startAnimation() {
 				this.stopAnimation();
-				this.intervalId = setInterval(this.tick, this.frameInterval());
 				this.animationStartDate = Date.now();
+				this.cancelAnimation = animationEngine.startAnimation(this.tick);
 			}
 
 			private stopAnimation() {
-				if (this.intervalId) {
-					clearInterval(this.intervalId);
-					this.intervalId = null;
+				if (this.cancelAnimation) {
+					this.cancelAnimation();
 				}
 			}
 
 			private tick = () => {
 				const diff = Date.now() - this.animationStartDate;
 				const a = Math.min(1, diff / duration);
-				if (a === 1) {
-					this.stopAnimation();
-				}
 
 				const interpolatedProps = this.interpolateProps(a);
 				const props = Object.assign({}, this.props, interpolatedProps);
 
 				this.setState({props});
+				return a !== 1;
 			};
-
-			private frameInterval() {
-				return 1 / 60 / 1000;
-			}
 
 			private assembleProps(): P {
 				return this.state.props;
