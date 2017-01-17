@@ -1,4 +1,6 @@
 import * as React from "react";
+import {shallowEquals} from "typescript-object-utils";
+
 import {AnimationEngine, AnimationFrameEngine, IntervalEngine} from "./AnimationEngine";
 import {easing, easingDefinition} from "./easing";
 
@@ -48,7 +50,7 @@ export function animate(options?: AnimationOptions): <C extends Function>(Wrappe
 			}
 
 			protected componentWillReceiveProps(nextProps: P) {
-				if (nextProps === this.props) return;
+				if(shallowEquals(nextProps, this.props)) return;
 				this.prevProps = this.state.props;
 				this.startAnimation();
 			}
