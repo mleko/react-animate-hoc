@@ -3,6 +3,15 @@ image: node
 before_script:
   - npm -q install
 
+cache:
+  paths:
+    - node_modules/
+
+test:
+  stage: test
+  script:
+    - npm -q test
+
 pages:
   stage: deploy
   script:
