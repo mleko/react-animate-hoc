@@ -1,6 +1,6 @@
 {
   "name": "react-easing",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "scripts": {
     "start": "webpack-dev-server --config examples/webpack.config.js --open",
     "prepublishOnly": "npm run compile",
@@ -60,6 +60,10 @@
     "coverageDirectory": ".coverage",
     "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": ["ts", "tsx", "js"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   }
 }
