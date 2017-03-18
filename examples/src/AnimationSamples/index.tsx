@@ -2,7 +2,19 @@ import * as React from "react";
 import {FloatingDiv} from "../FloatingDiv";
 import {animate, AnimationOptions} from "./../../../src";
 
-const defs: AnimationOptions[] = [
+const zigZagEasing = (t: number): number => {
+	const t1 = 0.75 / 2;
+	const t2 = 1.25 / 2;
+	if (t < t1) {
+		return t * 2;
+	} else if (t < t2) {
+		return 0.75 - (t - t1) * 2;
+	} else {
+		return 0.25 + (t - t2) * 2;
+	}
+};
+
+const defs: (AnimationOptions & {description?: string})[] = [
 	{duration: 1000},
 	{duration: 1000, easing: "linear"},
 	{duration: 1000, easing: "ease-in-out"},
@@ -10,6 +22,7 @@ const defs: AnimationOptions[] = [
 	{duration: 1000, easing: [0.23, 1, 0.32, 1]},
 	{duration: 2000, easing: "linear"},
 	{duration: 2000, easing: "ease-in-out"},
+	{duration: 2000, easing: zigZagEasing, description: "custom zigZag easing"},
 ];
 
 const animatedDivs = defs.map((def) => {
@@ -36,7 +49,7 @@ export class AnimationSamples extends React.Component<void, State> {
 				key: i,
 				x: this.state.values[i],
 				index: i,
-				text: JSON.stringify(defs[i]),
+				text: this.stringify(defs[i]),
 				onClick: this.toggleState
 			}));
 		}
@@ -46,6 +59,20 @@ export class AnimationSamples extends React.Component<void, State> {
 				{examples}
 			</div>
 		);
+	}
+
+	private stringify(obj: {[id: string]: any}): string {
+		const b = {};
+		for (let property in obj) {
+			if (obj.hasOwnProperty(property)) {
+				if (typeof obj[property] === "function") {
+					b[property] = "[function]";
+				} else {
+					b[property] = obj[property];
+				}
+			}
+		}
+		return JSON.stringify(b);
 	}
 
 	private toggleState = (i: number) => {
