@@ -1,22 +1,20 @@
 import * as React from "react";
 import {shallowEquals} from "typescript-object-utils";
-
-import {AnimationEngine, AnimationFrameEngine, IntervalEngine} from "./AnimationEngine";
+import {AnimationEngine, fallbackEngine} from "./AnimationEngine";
 import {easing, easingDefinition} from "./easing";
 
 const defaults: AnimationOptions = {
 	duration: 1000,
-	easing: "linear"
+	easing: "linear",
+	animationEngine: fallbackEngine
 };
-
-const requestAnimationFrameAvailable = !!window.requestAnimationFrame;
-const animationEngine: AnimationEngine = requestAnimationFrameAvailable ? new AnimationFrameEngine() : new IntervalEngine(60);
 
 export function animate(options?: AnimationOptions): <C extends Function>(WrappedComponent: C) => C {
 
 	options = options || defaults;
 	const duration = options.duration || defaults.duration;
 	const timingFunction = easing(options.easing || defaults.easing);
+	const animationEngine = options.animationEngine || defaults.animationEngine;
 
 	return <T extends React.ComponentClass<P>, P>(WrappedComponent: T): React.ComponentClass<P> => {
 
@@ -50,7 +48,7 @@ export function animate(options?: AnimationOptions): <C extends Function>(Wrappe
 			}
 
 			protected componentWillReceiveProps(nextProps: P) {
-				if(shallowEquals(nextProps, this.props)) return;
+				if (shallowEquals(nextProps, this.props)) return;
 				this.prevProps = this.state.props;
 				this.startAnimation();
 			}
@@ -85,7 +83,8 @@ export function animate(options?: AnimationOptions): <C extends Function>(Wrappe
 			private interpolateProps(a: number) {
 				let props = {};
 				for (let key of Object.keys(this.props)) {
-					if (this.prevProps.hasOwnProperty(key) && Animate.isNumber(this.props[key]) && Animate.isNumber(this.prevProps[key])) {
+					if (this.prevProps.hasOwnProperty(key) && Animate.isNumber(this.props[key]) && Animate.isNumber(
+							this.prevProps[key])) {
 						let prevProp = this.prevProps[key] as number;
 						let prop = this.props[key] as number;
 						props[key] = (prevProp) + (prop - prevProp) * timingFunction(a);
@@ -106,4 +105,5 @@ export function animate(options?: AnimationOptions): <C extends Function>(Wrappe
 export interface AnimationOptions {
 	duration: number;
 	easing?: easingDefinition;
+	animationEngine?: AnimationEngine;
 }

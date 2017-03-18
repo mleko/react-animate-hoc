@@ -5,7 +5,8 @@
     "start": "webpack-dev-server --config examples/webpack.config.js --open",
     "prepublishOnly": "npm run compile",
     "compile": "tsc -d",
-    "compile:examples": "webpack --config examples/webpack.config.js"
+    "compile:examples": "webpack --config examples/webpack.config.js",
+    "clean": "rm -r ./dist"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
