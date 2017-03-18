@@ -3,7 +3,8 @@
   "version": "0.3.0",
   "scripts": {
     "prepublish": "tsc -d",
-    "start": "webpack-dev-server --config examples/webpack.config.js --open"
+    "start": "webpack-dev-server --config examples/webpack.config.js --open",
+    "compile:examples": "webpack --config examples/webpack.config.js"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
