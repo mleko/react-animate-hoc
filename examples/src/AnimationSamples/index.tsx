@@ -14,6 +14,16 @@ const zigZagEasing = (t: number): number => {
 	}
 };
 
+const easingWithPause = (t: number): number => {
+	if (t < 0.3) {
+		return t / 0.3 * 0.5;
+	} else if (t < 0.7) {
+		return 0.5;
+	} else {
+		return 0.5 + (t - 0.7) / 0.3 * 0.5;
+	}
+};
+
 const defs: (AnimationOptions & {description?: string})[] = [
 	{duration: 1000},
 	{duration: 1000, easing: "linear"},
@@ -23,6 +33,7 @@ const defs: (AnimationOptions & {description?: string})[] = [
 	{duration: 2000, easing: "linear"},
 	{duration: 2000, easing: "ease-in-out"},
 	{duration: 2000, easing: zigZagEasing, description: "custom zigZag easing"},
+	{duration: 2000, easing: easingWithPause, description: "custom easing with pause"},
 ];
 
 const animatedDivs = defs.map((def) => {
