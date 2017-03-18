@@ -6,6 +6,7 @@
     "start": "webpack-dev-server --open"
   },
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "keywords": [
     "easing",
     "animation",
