@@ -1,4 +1,4 @@
-#react-easing
+# react-easing
 > Higher-order component easing prop changes for React
 
 [![NPM](https://nodei.co/npm/react-easing.png?compact=true)](https://nodei.co/npm/react-easing/)
