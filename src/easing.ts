@@ -10,7 +10,7 @@ export function easing(definition: easingDefinition): Easing {
 	if (typeof definition === "string") {
 		return getByName(definition);
 	} else if (Array.isArray(definition) && definition.length >= 4) {
-		return getBezierCoefficients(definition);
+		return getBezierByCoefficients(definition);
 	}
 	return definition as Easing;
 }
@@ -24,10 +24,10 @@ const easings: {[id: string]: bezierCoefficients} = {
 };
 export type easingName = "ease" | "linear" | "ease-in" | "ease-out" | "ease-in-out";
 function getByName(name: easingName): Easing {
-	return getBezierCoefficients(easings[name]);
+	return getBezierByCoefficients(easings[name]);
 }
 
 export type bezierCoefficients = [number, number, number, number];
-function getBezierCoefficients(coefficients: bezierCoefficients): Easing {
+function getBezierByCoefficients(coefficients: bezierCoefficients): Easing {
 	return bezier(coefficients[0], coefficients[1], coefficients[2], coefficients[3]);
 }
