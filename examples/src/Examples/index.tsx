@@ -1,7 +1,8 @@
 import * as React from "react";
 import {AnimationSamples} from "../AnimationSamples";
 import {AnnotatedElement} from "../AnnotatedElement";
-import {FloatingDiv} from "../FloatingDiv/index";
+import {ColorBarSamples} from "../ColorBarSamples";
+import {FloatingDiv} from "../FloatingDiv";
 import {WrappedElement} from "../WrappedElement";
 
 export class Examples extends React.Component<void, State> {
@@ -24,6 +25,8 @@ export class Examples extends React.Component<void, State> {
 
 				<h2>Example configurations</h2>
 				<AnimationSamples/>
+				<h2>Color bar samples</h2>
+				<ColorBarSamples/>
 			</div>
 		);
 
