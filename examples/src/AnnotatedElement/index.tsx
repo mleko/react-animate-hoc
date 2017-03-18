@@ -1,5 +1,5 @@
 import * as React from "react";
-import {animate} from "../../src";
+import {animate} from "../../../src";
 import {FloatingDiv, Props} from "../FloatingDiv";
 
 @animate({duration: 600, easing: "ease-in-out"})

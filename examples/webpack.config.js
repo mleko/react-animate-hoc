@@ -1,3 +1,5 @@
+var path = require('path');
+
 module.exports = {
     resolve: {
         // .js is required for react imports.
@@ -19,11 +21,15 @@ module.exports = {
             exclude: /node_modules/
         }]
     },
+    context: path.resolve(__dirname),
     entry: {
-        // Set index.tsx as application entry point.
-        app: './examples/index.tsx'
+        bundle: './src/index.tsx'
+    },
+    output: {
+        filename: "./bundle.js",
+        path: path.resolve(__dirname, "dist")
     },
     devServer: {
-        contentBase: './examples/'
+        contentBase: path.resolve(__dirname, "public_html")
     }
 };
