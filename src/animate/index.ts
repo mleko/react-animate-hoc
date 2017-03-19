@@ -115,13 +115,12 @@ export function animate(options?: AnimateOptions): <C extends Function>(WrappedC
 
 export type AnimateOptions = AnimationOptions & AnimationConfig;
 
-interface AnimationOptions {
-	duration: number;
+export interface AnimationOptions {
 	properties?: PropertiesDefinition;
 	animationEngine?: AnimationEngine;
 }
 
-interface AnimationConfig {
+export interface AnimationConfig {
 	duration?: number;
 	easing?: easingDefinition;
 }

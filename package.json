@@ -1,5 +1,6 @@
 {
   "name": "react-easing",
+  "description": "Higher-order component easing/animating prop changes for React",
   "version": "0.4.0",
   "scripts": {
     "start": "webpack-dev-server --config examples/webpack.config.js --open",

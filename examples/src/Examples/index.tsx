@@ -3,6 +3,7 @@ import {AnimationSamples} from "../AnimationSamples";
 import {AnnotatedElement} from "../AnnotatedElement";
 import {ColorBarSamples} from "../ColorBarSamples";
 import {FloatingDiv} from "../FloatingDiv";
+import {ReadmeExamples} from "../ReadmeExample";
 import {WrappedElement} from "../WrappedElement";
 
 export class Examples extends React.Component<void, State> {
@@ -27,6 +28,8 @@ export class Examples extends React.Component<void, State> {
 				<AnimationSamples/>
 				<h2>Color bar samples</h2>
 				<ColorBarSamples/>
+				<h2>Readme example</h2>
+				<div><ReadmeExamples/></div>
 			</div>
 		);
 
