@@ -1,8 +1,8 @@
 import * as React from "react";
+import {animate, AnimateOptions} from "react-easing";
 import {fill} from "../fill";
 import {FloatingDiv} from "../FloatingDiv";
 import {stringify} from "../stringify";
-import {animate, AnimateOptions} from "./../../../src";
 
 const zigZagEasing = (t: number): number => {
 	const t1 = 0.75 / 2;

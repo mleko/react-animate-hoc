@@ -1,4 +1,4 @@
-import {animate} from "../../../src";
-import {FloatingDiv} from "../FloatingDiv/index";
+import {animate} from "react-easing";
+import {FloatingDiv} from "../FloatingDiv";
 
 export const WrappedElement = animate({duration: 600, easing: "ease-in-out"})(FloatingDiv);

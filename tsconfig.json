@@ -10,7 +10,11 @@
     "noLib": false,
     "preserveConstEnums": true,
     "suppressImplicitAnyIndexErrors": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "baseUrl": "./src",
+    "paths": {
+      "react-easing": ["./src/index"]
+    }
   },
   "files": [
     "src/index.ts",

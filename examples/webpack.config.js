@@ -8,7 +8,10 @@ var config = {
         // .js is required for react imports.
         // .tsx is for our app entry point.
         // .ts is optional, in case you will be importing any regular ts files.
-        extensions: ['.js', '.ts', '.tsx']
+        extensions: ['.js', '.ts', '.tsx'],
+        alias:{
+            "react-easing": path.resolve(__dirname, "../src/index")
+        }
     },
     module: {
         rules: [

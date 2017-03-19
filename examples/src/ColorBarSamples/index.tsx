@@ -1,8 +1,8 @@
 import * as React from "react";
+import {animate, AnimateOptions} from "react-easing";
 import {ColorBar} from "../ColorBar";
 import {fill} from "../fill";
 import {stringify} from "../stringify";
-import {animate, AnimateOptions} from "./../../../src";
 
 const exampleDefs: ({def: AnimateOptions, height?: number})[] = [
 	{def: {duration: 1000}},
