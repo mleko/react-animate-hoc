@@ -2,7 +2,7 @@ import * as React from "react";
 import {fill} from "../fill";
 import {FloatingDiv} from "../FloatingDiv";
 import {stringify} from "../stringify";
-import {animate, AnimationOptions} from "./../../../src";
+import {animate, AnimateOptions} from "./../../../src";
 
 const zigZagEasing = (t: number): number => {
 	const t1 = 0.75 / 2;
@@ -26,7 +26,7 @@ const easingWithPause = (t: number): number => {
 	}
 };
 
-const defs: (AnimationOptions & {description?: string})[] = [
+const defs: (AnimateOptions & {description?: string})[] = [
 	{duration: 1000},
 	{duration: 1000, easing: "linear"},
 	{duration: 1000, easing: "ease-in-out"},
