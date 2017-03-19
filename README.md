@@ -1,11 +1,12 @@
 # react-easing
 > Higher-order component easing prop changes for React
 
-[![NPM](https://nodei.co/npm/react-easing.png?compact=true)](https://nodei.co/npm/react-easing/)
+# Deprecated
+Project was renamed to [react-animate-hoc](https://www.npmjs.com/package/react-animate-hoc)
 
 ## Demo
 
-Live demo is available https://mleko.gitlab.io/react-easing/
+Live demo is available https://mleko.gitlab.io/react-animate-hoc/
 
 ## Installation
 
