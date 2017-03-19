@@ -5,7 +5,7 @@ export class ColorBar extends React.Component<Props, void> {
 		const props = this.props;
 		let containerStyle = {
 			width: "100% - 30px",
-			height: 20,
+			height: this.props.height || 20,
 			position: "relative",
 			padding: "3px 33px 3px 3px",
 			border: "1px black solid",
@@ -37,6 +37,7 @@ export interface Props {
 	b: number;
 	text?: string;
 	index?: number;
+	height?: number;
 
 	onClick?: (id: number) => void;
 }

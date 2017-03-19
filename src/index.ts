@@ -1,1 +1,1 @@
-export {animate, AnimationOptions} from "./animate";
+export {animate, AnimateOptions} from "./animate";
