@@ -10,7 +10,7 @@ var config = {
         // .ts is optional, in case you will be importing any regular ts files.
         extensions: ['.js', '.ts', '.tsx'],
         alias:{
-            "react-easing": path.resolve(__dirname, "../src/index")
+            "react-animate-hoc": path.resolve(__dirname, "../src/index")
         }
     },
     module: {

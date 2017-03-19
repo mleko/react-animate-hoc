@@ -1,5 +1,5 @@
 import * as React from "react";
-import {animate, AnimateOptions} from "react-easing";
+import {animate, AnimateOptions} from "react-animate-hoc";
 import {ColorBar} from "../ColorBar";
 import {fill} from "../fill";
 import {stringify} from "../stringify";

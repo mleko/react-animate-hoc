@@ -1,5 +1,5 @@
 import * as React from "react";
-import {animate} from "react-easing";
+import {animate} from "react-animate-hoc";
 
 export function ColorBox(p: RgbColor): JSX.Element {
 	let style = {

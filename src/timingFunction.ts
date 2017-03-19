@@ -1,18 +1,18 @@
 import * as bezier from "bezier-easing";
 
-export interface Easing {
+export interface TimingFunction {
 	(x: number): number;
 }
 
-export type easingDefinition = easingName | bezierCoefficients | Easing;
+export type timingFunctionDefinition = easingName | bezierCoefficients | TimingFunction;
 
-export function easing(definition: easingDefinition): Easing {
+export function timingFunction(definition: timingFunctionDefinition): TimingFunction {
 	if (typeof definition === "string") {
 		return getByName(definition);
 	} else if (Array.isArray(definition) && definition.length >= 4) {
 		return getBezierByCoefficients(definition);
 	}
-	return definition as Easing;
+	return definition as TimingFunction;
 }
 
 const easings: {[id: string]: bezierCoefficients} = {
@@ -23,11 +23,11 @@ const easings: {[id: string]: bezierCoefficients} = {
 	"ease-in-out": [0.42, 0.0, 0.58, 1.0]
 };
 export type easingName = "ease" | "linear" | "ease-in" | "ease-out" | "ease-in-out";
-function getByName(name: easingName): Easing {
+function getByName(name: easingName): TimingFunction {
 	return getBezierByCoefficients(easings[name]);
 }
 
 export type bezierCoefficients = [number, number, number, number];
-function getBezierByCoefficients(coefficients: bezierCoefficients): Easing {
+function getBezierByCoefficients(coefficients: bezierCoefficients): TimingFunction {
 	return bezier(coefficients[0], coefficients[1], coefficients[2], coefficients[3]);
 }

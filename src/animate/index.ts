@@ -1,13 +1,13 @@
 import * as React from "react";
 import {merge, shallowEquals, shallowMerge} from "typescript-object-utils";
 import {AnimationEngine, fallbackEngine} from "../AnimationEngine";
-import {easing, Easing, easingDefinition} from "../easing";
+import {timingFunction, TimingFunction, timingFunctionDefinition} from "../timingFunction";
 import {resolvePropAnimationMethods} from "./resolvePropAnimationMethods";
 import {shouldInterpolateProp} from "./shouldInterpolateProp";
 
 const defaults: AnimateOptions = {
 	duration: 1000,
-	easing: "linear",
+	timingFunction: "linear",
 	animationEngine: fallbackEngine
 };
 
@@ -89,7 +89,7 @@ export function animate(options?: AnimateOptions): <C extends Function>(WrappedC
 						config = merge(config, config.properties[key]);
 					}
 					this.animationMap[key] = {
-						timingFunction: easing(config.easing),
+						timingFunction: timingFunction(config.timingFunction),
 						duration: config.duration,
 						startValue: this.props[key],
 						animationStartDate: 0,
@@ -122,13 +122,13 @@ export interface AnimationOptions {
 
 export interface AnimationConfig {
 	duration?: number;
-	easing?: easingDefinition;
+	timingFunction?: timingFunctionDefinition;
 }
 
 export type PropertiesDefinition = null | string[] | {[id: string]: AnimationConfig|true};
 
 interface AnimationData {
-	timingFunction: Easing;
+	timingFunction: TimingFunction;
 	duration: number;
 	startValue: number;
 	animationStartDate: number;

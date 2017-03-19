@@ -1,7 +1,7 @@
 {
-  "name": "react-easing",
+  "name": "react-animate-hoc",
   "description": "Higher-order component easing/animating prop changes for React",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "scripts": {
     "start": "webpack-dev-server --config examples/webpack.config.js --open",
     "prepublishOnly": "npm run compile",
@@ -47,7 +47,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mleko/react-easing.git"
+    "url": "git+https://github.com/mleko/react-animate-hoc.git"
   },
   "dependencies": {
     "bezier-easing": "^2.0.3",

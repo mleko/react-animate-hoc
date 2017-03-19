@@ -1,5 +1,5 @@
 import * as React from "react";
-import {animate, AnimateOptions} from "react-easing";
+import {animate, AnimateOptions} from "react-animate-hoc";
 import {fill} from "../fill";
 import {FloatingDiv} from "../FloatingDiv";
 import {stringify} from "../stringify";
@@ -28,14 +28,14 @@ const easingWithPause = (t: number): number => {
 
 const defs: (AnimateOptions & {description?: string})[] = [
 	{duration: 1000},
-	{duration: 1000, easing: "linear"},
-	{duration: 1000, easing: "ease-in-out"},
-	{duration: 1000, easing: "ease"},
-	{duration: 1000, easing: [0.23, 1, 0.32, 1]},
-	{duration: 2000, easing: "linear"},
-	{duration: 2000, easing: "ease-in-out"},
-	{duration: 2000, easing: zigZagEasing, description: "custom zigZag easing"},
-	{duration: 2000, easing: easingWithPause, description: "custom easing with pause"},
+	{duration: 1000, timingFunction: "linear"},
+	{duration: 1000, timingFunction: "ease-in-out"},
+	{duration: 1000, timingFunction: "ease"},
+	{duration: 1000, timingFunction: [0.23, 1, 0.32, 1]},
+	{duration: 2000, timingFunction: "linear"},
+	{duration: 2000, timingFunction: "ease-in-out"},
+	{duration: 2000, timingFunction: zigZagEasing, description: "custom zigZag timingFunction"},
+	{duration: 2000, timingFunction: easingWithPause, description: "custom timingFunction with pause"},
 ];
 
 const animatedDivs = defs.map((def) => {

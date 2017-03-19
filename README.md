@@ -1,18 +1,18 @@
-# react-easing
+# react-animate-hoc
 > Higher-order component easing/animating prop changes for React
 
-[![NPM](https://nodei.co/npm/react-easing.png?compact=true)](https://nodei.co/npm/react-easing/)
+[![NPM](https://nodei.co/npm/react-animate-hoc.png?compact=true)](https://nodei.co/npm/react-animate-hoc/)
 
 ## Demo
 
-Live demo is available https://mleko.gitlab.io/react-easing/
+Live demo is available https://mleko.gitlab.io/react-animate-hoc/
 
 ## Installation
 
-Library can be installed via [npm](https://www.npmjs.com/package/react-easing).
+Library can be installed via [npm](https://www.npmjs.com/package/react-animate-hoc).
 
 ```
-$ npm install react-easing
+$ npm install react-animate-hoc
 ```
 
 ## Usage

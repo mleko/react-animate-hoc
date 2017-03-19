@@ -13,7 +13,7 @@
     "experimentalDecorators": true,
     "baseUrl": "./src",
     "paths": {
-      "react-easing": ["./src/index"]
+      "react-animate-hoc": ["./src/index"]
     }
   },
   "files": [
